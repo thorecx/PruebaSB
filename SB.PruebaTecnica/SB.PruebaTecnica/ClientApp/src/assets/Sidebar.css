@@ -1,0 +1,22 @@
+﻿.item {
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
+}
+
+.item:hover {
+        background: rgba(62, 91, 110, 0.273);
+}
+
+.item.active {
+        background: rgba(62, 91, 110, 0.273);
+        border-radius: 10px;
+}
+
+.item>img{
+    margin-right:5px;
+}

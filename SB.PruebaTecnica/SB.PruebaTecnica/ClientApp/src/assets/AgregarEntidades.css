@@ -1,0 +1,16 @@
+﻿label{
+    color: black
+}
+
+hr{
+    color:black;
+    width:25%
+}
+
+.crearRegistroContent{
+    margin-left:35%;
+}
+
+form {
+    width: 35%;
+}

@@ -1,0 +1,46 @@
+﻿body {
+    margin: 0;
+    background: #0d2f48;
+    color: white;
+}
+
+.tableContainer {
+    border-radius: 50px 50px 0 0;
+    height: 1240px;
+    width: 100%;
+    background: #edf0f9;
+    display: flex;
+    justify-content: center;
+}
+
+.tableCard {
+    width: 95%;
+    margin-top: 40px;
+    height: fit-content;
+    padding: 25px;
+    border-radius: 40px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+h5{
+    color:black;
+}
+
+.menu{
+    margin-left: 25px;
+}
+
+.title {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding-left: 26px;
+}
+
+/*.tableCard {
+    background: white;
+    border-radius: 50px 50px 0 0;
+    height: 100%;
+    width: 100%;
+}*/
