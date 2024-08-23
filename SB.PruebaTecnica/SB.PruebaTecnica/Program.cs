@@ -2,11 +2,19 @@ using SB.PruebaTecnica.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console() // Log en la consola
+    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day) // Log en archivos diarios
+    .CreateLogger();
+
+builder.Host.UseSerilog(); // Usar Serilog como el logger
 
 // Configurar servicios
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)  // Establecer el esquema predeterminado

@@ -16,10 +16,13 @@ namespace SB.PruebaTecnica.Controllers
     {
 
         private readonly PruebaSBContext _dbcontext;
+        private readonly ILogger<EntidadGubernamentalController> _logger;
 
-        public EntidadGubernamentalController(PruebaSBContext dbcontext)
+        public EntidadGubernamentalController(PruebaSBContext dbcontext, ILogger<EntidadGubernamentalController> logger)
         {
             _dbcontext = dbcontext;
+            _logger = logger;
+
         }
 
         [Authorize]
@@ -27,6 +30,7 @@ namespace SB.PruebaTecnica.Controllers
         [Route("List")]
         public async Task<IActionResult> GetEntidades()
         {
+            _logger.LogError("An error occurred");
             List<EntidadGubernamental> entidadesGubernamentales = await _dbcontext.EntidadGubernamentals.OrderByDescending(c => c.Id).ToListAsync();
 
             return StatusCode(StatusCodes.Status200OK, entidadesGubernamentales);
@@ -37,6 +41,7 @@ namespace SB.PruebaTecnica.Controllers
         [Route("List/{id:int}")]
         public async Task<IActionResult> GetEntidad(int id)
         {
+            _logger.LogError("An error occurred");
             EntidadGubernamental entidadGubernamental = _dbcontext.EntidadGubernamentals.Find(id);
 
             return StatusCode(StatusCodes.Status200OK, entidadGubernamental);
@@ -47,6 +52,7 @@ namespace SB.PruebaTecnica.Controllers
         [Route("Save")]
         public async Task<IActionResult> SaveEntidades([FromBody] EntidadGubernamental request)
         {
+            _logger.LogError("An error occurred");
             await _dbcontext.EntidadGubernamentals.AddAsync(request);
             await _dbcontext.SaveChangesAsync();
 
@@ -58,6 +64,7 @@ namespace SB.PruebaTecnica.Controllers
         [Route("Edit")]
         public async Task<IActionResult> EditEntidades([FromBody] EntidadGubernamental request)
         {
+            _logger.LogError("An error occurred");
             _dbcontext.EntidadGubernamentals.Update(request);
             await _dbcontext.SaveChangesAsync();
 
@@ -69,6 +76,7 @@ namespace SB.PruebaTecnica.Controllers
         [Route("Delete/{id:int}")]
         public async Task<IActionResult> DeleteEntidad(int id)
         {
+            _logger.LogError("An error occurred");
             EntidadGubernamental entidadGubernamental = _dbcontext.EntidadGubernamentals.Find(id);
 
             _dbcontext.EntidadGubernamentals.Remove(entidadGubernamental);
@@ -81,6 +89,7 @@ namespace SB.PruebaTecnica.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] Usuario usuario)
         {
+            _logger.LogError("An error occurred");
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("PruebaSBPruebaSBPruebaSB");
